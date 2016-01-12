@@ -1,0 +1,11 @@
+---
+# all role tasks
+#
+- name: Create LXC container on host1
+  lxc_container:
+      name: doom
+      state: started
+      template: ubuntu
+      
+    
+

@@ -1,0 +1,40 @@
+---
+driver:
+    name: vagrant
+    customize:
+      memory: 2048
+      cpus: 4
+
+provisioner:
+  name: ansible_playbook
+  roles_path: roles
+  hosts: all
+  playbook: site.yml
+  require_ansible_repo: true
+  ansible_verbose: true
+  # chef_omnibus_url: download_cache/chef_11.16.4-1_amd64.deb
+
+
+platforms:    
+- name: ubuntu-14.04
+  driver_plugin: vagrant
+  driver_config:
+    box: nocm_ubuntu-14.04
+    box_url: https://atlas.hashicorp.com/puppetlabs/boxes/ubuntu-14.04-64-nocm/versions/1.0.1/providers/virtualbox.box
+
+suites:
+- name: host1
+  provisioner:
+    hosts: all
+  driver_config:
+    network:
+      # - ["forwarded_port", {guest: 6667, host: 6667, auto_correct: true}]
+      - ["private_network", {ip: "172.16.192.10"}]
+
+- name: host2
+  provisioner:
+    hosts: all
+  driver_config:
+    network:
+      # - ["forwarded_port", {guest: 6667, host: 6667, auto_correct: true}]
+      - ["private_network", {ip: "172.16.192.20"}]

@@ -1,0 +1,7 @@
+---
+# All hosts!
+- hosts: host1
+  remote_user: root
+  gather_facts: yes
+  roles:
+    - host1

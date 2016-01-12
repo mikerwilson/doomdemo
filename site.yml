@@ -1,0 +1,3 @@
+---
+- include: roles/all.yml
+- include: roles/host1.yml

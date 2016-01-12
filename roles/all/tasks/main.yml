@@ -1,0 +1,31 @@
+---
+# all role tasks
+#
+
+# Add LXC daily build repo
+- name: Add LXC Daily Build Repo
+  apt_repository: repo='ppa:ubuntu-lxc/daily' state=present
+
+# Update debian cache
+- name: Update apt-cache
+  apt: update_cache=yes cache_valid_time=86400
+
+# Install default packages we like working with
+- name: Install general support packages
+  apt: name={{ item }} state=latest
+  with_items:
+    - vim
+    - htop
+    - dstat
+    - mlocate
+
+# lxc build-essential protobuf-c-compiler asciidoc
+# Install packages for container migration
+- name: Install LXC packages and such for container migration demo
+  apt: name={{ item }} state=latest
+  with_items:
+    - lxc
+    - criu
+
+    
+

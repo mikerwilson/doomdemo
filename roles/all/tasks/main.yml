@@ -1,6 +1,9 @@
 ---
 # all role tasks
 #
+# TODO: Add lxd
+# TODO: Use stable build of LXC vs daily build.
+# TODO: use LXD vs criu for migration
 
 # Add LXC daily build repo
 - name: Add LXC Daily Build Repo
@@ -26,6 +29,7 @@
   with_items:
     - lxc
     - criu
+    - avahi-daemon
 
     
 

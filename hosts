@@ -2,9 +2,12 @@
 
 [all]
 
+
 [all:vars]
 use_apt_cacher=True
 apt_cacher=192.168.1.224
 hobbit_server=192.168.1.224
 irc_server=192.168.1.227
 
+[host1]
+172.16.1.

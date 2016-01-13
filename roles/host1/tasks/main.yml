@@ -1,11 +1,20 @@
 ---
 # all role tasks
 #
-- name: Create LXC container on host1
+- name: Create/configure LXC container on host1
   lxc_container:
       name: doom
       state: started
       template: ubuntu
+      container_config:
+        - "lxc.network.type=veth"
+        - "lxc.network.flags=up"
+        - "lxc.network.link=lxc-bridge-nat"
+        - "lxc.network.ipv4=172.16.192.15/24"
+        - "lxc.network.ipv4.gateway=auto"
+      # container_command: |
+      #   sudo apt-get update
+      #   sudo apt-get install -y vnc4server prboom-plus doom-wad-shareware
+        
       
-    
-
+        

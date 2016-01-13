@@ -2,7 +2,7 @@
 driver:
     name: vagrant
     customize:
-      memory: 2048
+      memory: 4096
       cpus: 4
 
 provisioner:
@@ -12,6 +12,7 @@ provisioner:
   playbook: site.yml
   require_ansible_repo: true
   ansible_verbose: true
+  ansible_inventory_file: ./hosts
   # chef_omnibus_url: download_cache/chef_11.16.4-1_amd64.deb
 
 
@@ -25,7 +26,7 @@ platforms:
 suites:
 - name: host1
   provisioner:
-    hosts: all
+    hosts: host1
   driver_config:
     network:
       # - ["forwarded_port", {guest: 6667, host: 6667, auto_correct: true}]

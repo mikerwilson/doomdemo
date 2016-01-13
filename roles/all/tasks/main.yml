@@ -3,8 +3,11 @@
 #
 
 # Add LXC daily build repo
-- name: Add LXC Daily Build Repo
-  apt_repository: repo='ppa:ubuntu-lxc/daily' state=present
+- name: Add LXC and LXD Daily Build Repos
+  apt_repository: repo={{ item }} state=present
+  with_items:
+    - 'ppa:ubuntu-lxc/lxd-git-master'
+    - 'ppa:ubuntu-lxc/daily'
 
 # Update debian cache
 - name: Update apt-cache
@@ -18,14 +21,24 @@
     - htop
     - dstat
     - mlocate
+    - python-dev
+    - libpython-dev
+    - python-pip
 
 # lxc build-essential protobuf-c-compiler asciidoc
 # Install packages for container migration
-- name: Install LXC packages and such for container migration demo
+- name: Install LXD packages and such for container migration demo
   apt: name={{ item }} state=latest
   with_items:
-    - lxc
-    - criu
+    - lxd
+    - lxd-client
+    - lxc-dev
 
-    
+# pip install lxc-python2
+- name: pip install lxc-python2
+  pip: name=lxc-python2 state=present
 
+# Copy phidgets library zip.  If updated, kick off unpack and install.
+# - name: create bridged network adapter
+#   copy: src=doombr.cfg dest=/etc/network/interfaces.d/doombr.cfg
+#   notify: reload network

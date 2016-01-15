@@ -37,9 +37,13 @@
     - lxd-client
     - lxc-dev
 
-# pip install lxc-python2
+# pip install lxc-python2 for ansible container support
 - name: pip install lxc-python2
   pip: name=lxc-python2 state=present
+
+# Remove issue-causing package
+- name: Remove lxcfs
+  apt: name=lxcfs state=absent
 
 # Copy phidgets library zip.  If updated, kick off unpack and install.
 # - name: create bridged network adapter

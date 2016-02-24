@@ -8,26 +8,26 @@ This is the ansible working environment with a full working test kitchen (for lo
 You'll need a few things to make this work.  The easiest way to get started is with Homebrew and Cask:
 
 ```
-\# Install Homebrew: 
+# Install Homebrew: 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-\# Install cask:
+# Install cask:
 brew install caskroom/cask/brew-cask
 
-\# Install vagrant, virtualbox, and chefdk (chefdk has a clean and sane ruby env)
+# Install vagrant, virtualbox, and chefdk (chefdk has a clean and sane ruby env)
 brew cask update
 brew cask install vagrant virtualbox chefdk
 
-\# Install ansible (for environment control)
+# Install ansible (for environment control)
 brew install ansible
 
-\# Put this in your ~/.bash_profie
+# Put this in your ~/.bash_profie
 export PATH="/opt/chefdk/embedded/bin:$PATH"
 
-\# Add bash completion and git prompt:
+# Add bash completion and git prompt:
 brew install bash-git-prompt bash-completion 
 
-\# If you want fancy-pants git prompts, add this too:
+# If you want fancy-pants git prompts, add this too:
 # Autocomplete
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
@@ -45,13 +45,13 @@ function git-branch-prompt {
 
 export PS1="\u@\h \[\033[0;36m\]\W\[\033[0m\]\[\033[0;32m\]\$(git-branch-prompt)\[\033[0m\] \$ "
 
-\# Run this to apply your ~/.bash_profile.
+# Run this to apply your ~/.bash_profile.
 source ~/.bash_profile
 
-\# Verify things look right
+# Verify things look right
 which gem   (->)   /opt/chefdk/embedded/bin/gem
 
-\# Install gems
+# Install gems
 gem install test-kitchen kitchen-vagrant kitchen-ansible
 
 ```

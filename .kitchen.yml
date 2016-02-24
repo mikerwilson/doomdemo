@@ -29,7 +29,7 @@ suites:
     hosts: host1
   driver_config:
     network:
-      # - ["forwarded_port", {guest: 6667, host: 6667, auto_correct: true}]
+      - ["forwarded_port", {guest: 80, host: 8080, auto_correct: true}]
       - ["private_network", {ip: "172.16.192.10"}]
 
 - name: host2
@@ -37,5 +37,5 @@ suites:
     hosts: all
   driver_config:
     network:
-      # - ["forwarded_port", {guest: 6667, host: 6667, auto_correct: true}]
+      - ["forwarded_port", {guest: 80, host: 8081, auto_correct: true}]
       - ["private_network", {ip: "172.16.192.20"}]

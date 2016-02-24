@@ -7,9 +7,9 @@
 #       state: started
 #       template: ubuntu
       # container_config:
-        # - "lxc.network.type=veth"
-        # - "lxc.network.flags=up"
-        # - "lxc.network.link=lxc-bridge-nat"
+      #   - "lxc.network.type=veth"
+      #   - "lxc.network.flags=up"
+      #   - "lxc.network.link=lxc-bridge-nat"
         # - "lxc.network.ipv4=172.16.192.15/24"
       #   - "lxc.network.ipv4.gateway=auto"
       # container_command: |

@@ -27,23 +27,24 @@
     - python-dev
     - libpython-dev
     - python-pip
+    - apache2
 
 # lxc build-essential protobuf-c-compiler asciidoc
 # Install packages for container migration
-- name: Install LXD packages and such for container migration demo
-  apt: name={{ item }} state=latest
-  with_items:
-    - lxd
-    - lxd-client
-    - lxc-dev
+# - name: Install LXD packages and such for container migration demo
+#   apt: name={{ item }} state=latest
+#   with_items:
+#     - lxd
+#     - lxd-client
+#     - lxc-dev
 
 # pip install lxc-python2 for ansible container support
-- name: pip install lxc-python2
-  pip: name=lxc-python2 state=present
+# - name: pip install lxc-python2
+#   pip: name=lxc-python2 state=present
 
 # Remove issue-causing package
-- name: Remove lxcfs
-  apt: name=lxcfs state=absent
+# - name: Remove lxcfs
+#   apt: name=lxcfs state=absent
 
 # Copy phidgets library zip.  If updated, kick off unpack and install.
 # - name: create bridged network adapter
